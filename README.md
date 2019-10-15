@@ -6,7 +6,7 @@ Welcome to *Working Title*, a game where the player explores an unfinished game.
 
 Things to add
 -----
-MVP
+### MVP
 
 - Player
   - [ ] Controls
