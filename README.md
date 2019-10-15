@@ -6,13 +6,10 @@ Welcome to *Working Title*, a game where the player explores an unfinished game.
 
 Things to add
 -----
+MVP
 
 - Player
   - [ ] Controls
   - [ ] Interaction
-  - [ ] Attack
-  - [ ] Take Damage
 - Environment
   - [ ] Walls
-  - [ ] Obstacles?
-- Enemies?
