@@ -6,10 +6,19 @@ Welcome to *Working Title*, a game where the player explores an unfinished game.
 
 Things to add
 -----
-### MVP
+#### MVP
 
 - Player
-  - [ ] Controls
+  - [ ] Movement
   - [ ] Interaction
 - Environment
   - [ ] Walls
+  - [ ] Doorways
+  
+#### Things to add later
+
+- Player
+  - [ ] Combat
+- Environment
+  - [ ] Obstacles
+- Enemies
