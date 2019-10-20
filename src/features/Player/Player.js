@@ -1,5 +1,5 @@
 import React from "react"
-import playerImage from './playerImage'
+import playerImage from './playerImage.jpg'
 import { connect } from 'react-redux'
 import handleMovement from "./movement"
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Player from "../Player/Player";
+import Zone from "../Zone/Zone"
 
 function Map() {
   return (
