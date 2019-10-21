@@ -1,5 +1,6 @@
 import store from "../../config/store";
-import { spriteSize } from "../../config/constants";
+import { spriteSize, mapSize } from "../../config/constants";
+
 
 export default function handleMovement(player) {
   function getNewPos(direction) {
@@ -16,11 +17,18 @@ export default function handleMovement(player) {
     }
   }
 
+  function checkMap(oldPos, newPos) {
+    return (newPos[0] >= 4 && newPos[0] <= mapSize) &&
+           (newPos[1] >= 4 && newPos[1] <= mapSize)
+           ? newPos : oldPos
+  }
+
   function dispatchMove(direction) {
+    const oldPos = store.getState().player.position
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: getNewPos(direction)
+        position: checkMap(oldPos, getNewPos(direction))
       }
     });
   }

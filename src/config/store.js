@@ -2,7 +2,8 @@ import { createStore, combineReducers } from "redux";
 import playerReducer from "../features/Player/reducer";
 
 const rootReducer = combineReducers({
-  player: playerReducer
+  player: playerReducer,
+  
 });
 
 const store = createStore(

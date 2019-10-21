@@ -3,8 +3,10 @@ import Map from "./features/Map/Map"
 
 function App() {
   return (
-    <div className="App">
-      <h1>Glitchy</h1>
+    <div>
+      <h1 style={{
+        textAlign: "center"
+      }}>*Working Title*</h1>
       <Map />
     </div>
   );

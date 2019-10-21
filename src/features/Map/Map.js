@@ -7,8 +7,8 @@ function Map() {
     <div
       style={{
         position: "relative",
-        width: "400px",
-        height: "400px",
+        width: "200px",
+        height: "200px",
         margin: "20px auto"
       }}
     >
