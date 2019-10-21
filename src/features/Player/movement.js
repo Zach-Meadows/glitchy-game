@@ -25,7 +25,7 @@ export default function handleMovement(player) {
   }
 
   function checkObstacles(newPos) {
-    const obstacle = store.getState().map.tiles[(newPos[0]+ 40)/40][(newPos[1]+40)/40]
+    const obstacle = store.getState().map.tiles[newPos[1]/40][newPos[0]/40]
     return obstacle === 0 ? true : false
   }
 
@@ -35,7 +35,7 @@ export default function handleMovement(player) {
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: checkMap(oldPos,newPos) ? newPos : oldPos
+        position: checkMap(oldPos,newPos) && checkObstacles(newPos) ? newPos : oldPos
       }
     });
   }
