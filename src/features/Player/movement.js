@@ -18,17 +18,24 @@ export default function handleMovement(player) {
   }
 
   function checkMap(oldPos, newPos) {
-    return (newPos[0] >= 4 && newPos[0] <= mapSize) &&
-           (newPos[1] >= 4 && newPos[1] <= mapSize)
-           ? newPos : oldPos
+    
+    return (newPos[0] >= 0 && newPos[0] <= mapSize - spriteSize) &&
+           (newPos[1] >= 0 && newPos[1] <= mapSize - spriteSize)
+           ? true : false
+  }
+
+  function checkObstacles(newPos) {
+    const obstacle = store.getState().map.tiles[(newPos[0]+ 40)/40][(newPos[1]+40)/40]
+    return obstacle === 0 ? true : false
   }
 
   function dispatchMove(direction) {
     const oldPos = store.getState().player.position
+    const newPos = getNewPos(direction)
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: checkMap(oldPos, getNewPos(direction))
+        position: checkMap(oldPos,newPos) ? newPos : oldPos
       }
     });
   }

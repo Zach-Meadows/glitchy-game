@@ -1,24 +1,60 @@
 import React from "react";
+import { spriteSize } from "../../config/constants";
+import rock from "../../data/images/rock.png";
+import tree from "../../data/images/tree.png";
+import { connect } from 'react-redux'
 
-// function Tile(props) {
-//   return <div style={{
-//     backgroundImage = {}
-//   }}></div>
-// }
+function getTileImage(num) {
+  switch (num) {
+    case 0:
+      return ''
+    case 1:
+      return rock;
+    case 2:
+      return tree;
+  }
+}
 
-function Zone() {
+
+
+function Tile(props) {
+  return <div style={{
+    margin: 0,
+    backgroundImage: `url("${getTileImage(props.value)}")`,
+    backgroundColor: 'green',
+    backgroundPosition: 'center',
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    display: 'inline-flex',
+    height: spriteSize,
+    width: spriteSize
+  }}></div>;
+}
+
+function Zone(props) {
   return (
     <div
       style={{
         width: "200px",
         height: "200px",
-        backgroundColor: "green",
-        border: "4px solid white"
+        backgroundColdor: "green",
       }}
     >
-      {/* {props.tiles.map( tile => <Tile value={tile}/>)} */}
+      {props.tiles.map((row, i)=> (
+        <div style={{height: spriteSize}} key={i}>
+          {row.map((tile, j)=> {
+           return <Tile value={tile} key={j} />
+          }
+          )}
+        </div>
+      ))}
     </div>
   );
 }
 
-export default Zone;
+function mapStateToProps(state) {
+  return {
+    tiles: state.map.tiles
+  } 
+}
+export default connect(mapStateToProps)(Zone);
