@@ -1,6 +1,6 @@
 import React from "react"
 
-function Npc(params) {
+function Npc(props) {
     <div style={{
         position: "absolute",
         top: props.position[1],
