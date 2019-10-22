@@ -6,10 +6,8 @@ import store from '../../config/store'
 
 function Map(props) {
   store.dispatch({ type: 'ADD_TILES', payload:{
+    interact,
     tiles
-  }})
-  store.dispatch({ type: 'ADD_INTERACTION', payload: {
-    interact
   }})
   return (
     <div
