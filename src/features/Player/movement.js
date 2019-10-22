@@ -25,7 +25,7 @@ export default function handleMovement(player) {
   }
 
   function checkObstacles(newPos) {
-    const obstacle = store.getState().map.tiles[newPos[1]/40][newPos[0]/40]
+    const obstacle = store.getState().map.tiles[newPos[1]/spriteSize][newPos[0]/spriteSize]
     return obstacle === 0 ? true : false
   }
 
@@ -39,20 +39,48 @@ export default function handleMovement(player) {
       }
     });
   }
+
+  function facingDirection(direction) {
+    switch (direction) {
+      case "<":
+        return 6
+      case ">":
+        return 73 
+      case "^":
+        return 156
+      case "V":
+        return 224
+        
+    }
+  }
+  function dispatchFacing(direction) {
+    const oldPos = store.getState().player.position
+    store.dispatch({
+      type: "CHANGE_FACING",
+      payload : {
+        position: oldPos,
+        facing: facingDirection(direction)
+      }
+    })
+  }
   function handleKeyPress(evt) {
     evt.preventDefault();
     switch (evt.keyCode) {
       case 37:
       case 65:
+          dispatchFacing("<")
         return dispatchMove("LEFT");
       case 38:
       case 87:
+          dispatchFacing("^")
         return dispatchMove("UP");
       case 39:
       case 68:
+          dispatchFacing(">")
         return dispatchMove("RIGHT");
       case 40:
       case 83:
+        dispatchFacing("V")
         return dispatchMove("DOWN");
       default:
         console.log(evt.keyCode);

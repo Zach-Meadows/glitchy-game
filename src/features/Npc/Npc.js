@@ -5,8 +5,8 @@ function Npc(props) {
         position: "absolute",
         top: props.position[1],
         left: props.position[0],
-        width: "40px",
-        height: "40px"
+        width: "80px",
+        height: "80px"
     }}>
     </div>
 }

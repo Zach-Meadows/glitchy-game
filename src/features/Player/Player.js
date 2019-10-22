@@ -10,10 +10,10 @@ function Player(props){
             top: props.position[1],
             left: props.position[0],
             backgroundImage: `url(${playerImage})`,
-            backgroundPosition: "-22px -2px",
-            backgroundSize: '220%',
-            width: "40px",
-            height: "40px",
+            backgroundPosition: `${props.facing}px -15px`,
+            backgroundSize: '290px',
+            width: "80px",
+            height: "80px",
         }} />
     )
 }
