@@ -27,7 +27,7 @@ function Tile(props) {
     backgroundRepeat: "no-repeat",
     display: 'inline-flex',
     height: spriteSize,
-    width: spriteSize
+    width: spriteSize,
   }}></div>;
 }
 

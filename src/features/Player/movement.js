@@ -1,10 +1,10 @@
 import store from "../../config/store";
 import { spriteSize, mapSize } from "../../config/constants";
-
+import handleInteraction from "./interaction";
 
 export default function handleMovement(player) {
   function getNewPos(direction) {
-      const oldPos = store.getState().player.position;
+    const oldPos = store.getState().player.position;
     switch (direction) {
       case "UP":
         return [oldPos[0], oldPos[1] - spriteSize];
@@ -17,25 +17,31 @@ export default function handleMovement(player) {
     }
   }
 
-  function checkMap(oldPos, newPos) {
-    
-    return (newPos[0] >= 0 && newPos[0] <= mapSize - spriteSize) &&
-           (newPos[1] >= 0 && newPos[1] <= mapSize - spriteSize)
-           ? true : false
+  function checkMap(newPos) {
+    return newPos[0] >= 0 &&
+      newPos[0] <= mapSize - spriteSize &&
+      (newPos[1] >= 0 && newPos[1] <= mapSize - spriteSize)
+      ? true
+      : false;
   }
 
   function checkObstacles(newPos) {
-    const obstacle = store.getState().map.tiles[newPos[1]/spriteSize][newPos[0]/spriteSize]
-    return obstacle === 0 ? true : false
+    const obstacle = store.getState().map.tiles[newPos[1] / spriteSize][
+      newPos[0] / spriteSize
+    ];
+    return obstacle === 0 ? true : false;
   }
 
   function dispatchMove(direction) {
-    const oldPos = store.getState().player.position
-    const newPos = getNewPos(direction)
+    const oldPos = store.getState().player.position;
+    const newPos = getNewPos(direction);
+    const currentFacing = store.getState().player.facing;
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: checkMap(oldPos,newPos) && checkObstacles(newPos) ? newPos : oldPos
+        position:
+          checkMap(newPos) && checkObstacles(newPos) ? newPos : oldPos,
+        facing: currentFacing
       }
     });
   }
@@ -43,44 +49,45 @@ export default function handleMovement(player) {
   function facingDirection(direction) {
     switch (direction) {
       case "<":
-        return 6
+        return "LEFT";
       case ">":
-        return 73 
+        return "RIGHT";
       case "^":
-        return 156
+        return "UP";
       case "V":
-        return 224
-        
+        return "DOWN";
     }
   }
   function dispatchFacing(direction) {
-    const oldPos = store.getState().player.position
+    const oldPos = store.getState().player.position;
     store.dispatch({
       type: "CHANGE_FACING",
-      payload : {
+      payload: {
         position: oldPos,
         facing: facingDirection(direction)
       }
-    })
+    });
   }
   function handleKeyPress(evt) {
     evt.preventDefault();
     switch (evt.keyCode) {
+      case 13:
+        return handleInteraction();
       case 37:
       case 65:
-          dispatchFacing("<")
+        dispatchFacing("<");
         return dispatchMove("LEFT");
       case 38:
       case 87:
-          dispatchFacing("^")
+        dispatchFacing("^");
         return dispatchMove("UP");
       case 39:
       case 68:
-          dispatchFacing(">")
+        dispatchFacing(">");
         return dispatchMove("RIGHT");
       case 40:
       case 83:
-        dispatchFacing("V")
+        dispatchFacing("V");
         return dispatchMove("DOWN");
       default:
         console.log(evt.keyCode);

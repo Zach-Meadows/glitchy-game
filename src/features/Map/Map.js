@@ -1,12 +1,15 @@
 import React from "react";
 import Player from "../Player/Player";
 import Zone from "../Zone/Zone"
-import {tiles} from '../../data/maps/1/index'
+import {tiles, interact} from '../../data/maps/1/index'
 import store from '../../config/store'
 
 function Map(props) {
   store.dispatch({ type: 'ADD_TILES', payload:{
     tiles
+  }})
+  store.dispatch({ type: 'ADD_INTERACTION', payload: {
+    interact
   }})
   return (
     <div
