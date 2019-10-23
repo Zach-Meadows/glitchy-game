@@ -1,7 +1,7 @@
 const initialState = {
     text: "You must construct additional pylons",
     display: false,
-    animation: 1
+    timer: undefined 
 }
 
 const textReducer = (state=initialState, action) => {

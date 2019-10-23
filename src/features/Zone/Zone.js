@@ -12,6 +12,8 @@ function getTileImage(num) {
       return rock;
     case 2:
       return tree;
+    default:
+      return ''
   }
 }
 
@@ -37,7 +39,7 @@ function Zone(props) {
       style={{
         width: "400px",
         height: "400px",
-        backgroundColdor: "green",
+        backgroundColor: "green",
       }}
     >
       {props.tiles.map((row, i)=> (
@@ -54,7 +56,7 @@ function Zone(props) {
 
 function mapStateToProps(state) {
   return {
-    tiles: state.map.tiles
+    tiles: state.map.tiles,
   } 
 }
 export default connect(mapStateToProps)(Zone);

@@ -42,27 +42,30 @@ export default function handleInteraction() {
   }
 
   const interactionSpot = convertToMatrixNums(facingNum(playerFacing));
-  const visible = store.getState().textbox.display;
 
   store.dispatch({
     type: "CHANGE_TEXT",
     payload: {
+      ...store.getState().textbox,
       text: interactionSpot === undefined
           ? "You can't escape."
           : mapInfo[interactionSpot[1]][interactionSpot[0]],
-      display: visible,
-      animation: 1
+      display: true
+      
     }
   });
+  if (interactionSpot != undefined && mapInfo[interactionSpot[1]][interactionSpot[0]] != 0) {
+    textBoxAnimation()
+  }
 
-  const currentText = store.getState().textbox.text;
-  textBoxAnimation()
-  return store.dispatch({
-    type: "CHANGE_TEXT",
-    payload: {
-      text: currentText,
-      display: currentText ? !visible : false,
-      animation: 1
-    }
-  });
+//   const currentText = store.getState().textbox.text;
+//   textBoxAnimation()
+//   return store.dispatch({
+//     type: "CHANGE_TEXT",
+//     payload: {
+//       text: currentText,
+//       display: currentText ? !visible : false,
+//       animation: 1
+//     }
+//   });
 }

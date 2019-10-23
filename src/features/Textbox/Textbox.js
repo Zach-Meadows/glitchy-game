@@ -6,7 +6,7 @@ const fade = keyframes`
 0% {
     opacity: 1;
 }
-30% {
+50% {
     opacity: 1;
 }
 100% {
@@ -22,15 +22,12 @@ border-radius: 20px;
 right: 50px;
 z-index: 5;
 opacity: 0;
-animation: ${fade} 3s ease-out;
+animation: ${fade} 5s ease-in;
 `
-
 function Textbox(props) {
     return(
         <>
         {props.display && props.text ? 
-            
-        
         <FadeBox >
             <h3 style={{
                textAlign: "center"

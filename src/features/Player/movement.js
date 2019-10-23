@@ -1,6 +1,7 @@
 import store from "../../config/store";
 import { spriteSize, mapSize } from "../../config/constants";
 import handleInteraction from "./interaction";
+let exit = "LEFT"
 
 export default function handleMovement(player) {
   function getNewPos(direction) {
@@ -29,7 +30,7 @@ export default function handleMovement(player) {
     const obstacle = store.getState().map.tiles[newPos[1] / spriteSize][
       newPos[0] / spriteSize
     ];
-    return obstacle === 0 ? true : false;
+    return obstacle === 0 || obstacle === 9? true : false;
   }
 
   function dispatchMove(direction) {
@@ -39,64 +40,71 @@ export default function handleMovement(player) {
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position:
-          checkMap(newPos) && checkObstacles(newPos) ? newPos : oldPos,
+        position: checkMap(newPos) && checkObstacles(newPos) ? newPos : oldPos,
         facing: currentFacing
       }
     });
   }
-
-  function facingDirection(direction) {
-    switch (direction) {
-      case "<":
-        return "LEFT";
-      case ">":
-        return "RIGHT";
-      case "^":
-        return "UP";
-      case "V":
-        return "DOWN";
-    }
-  }
+  // function to change the state of where the player is
   function dispatchFacing(direction) {
     const oldPos = store.getState().player.position;
     store.dispatch({
       type: "CHANGE_FACING",
       payload: {
         position: oldPos,
-        facing: facingDirection(direction)
+        facing: direction
       }
     });
   }
+  // check if player meets conditions to go to next zone,
+  // otherwise move the player
+  function checkNextZone(direction) {
+    const currentPosition = store.getState().player.position
+    const standingOn = store.getState().map.tiles[currentPosition[1]/spriteSize][currentPosition[0]/spriteSize]
+    if (standingOn === 9 && direction === store.getState().zone.exit) {
+      store.dispatch({
+        type: "CHANGE_ZONE",
+        payload: {
+          ...store.getState().zone,
+          layout: store.getState().zone.layout + 1
+        }
+      })
+    } else {
+      dispatchMove(direction);
+    }
+  }
+// event listener func for directional controls
   function handleKeyPress(evt) {
     evt.preventDefault();
     switch (evt.keyCode) {
       case 37:
       case 65:
-        dispatchFacing("<");
-        return dispatchMove("LEFT");
+        dispatchFacing("LEFT");
+        return checkNextZone("LEFT");
       case 38:
       case 87:
-        dispatchFacing("^");
-        return dispatchMove("UP");
+        dispatchFacing("UP");
+        return checkNextZone("UP");
       case 39:
       case 68:
-        dispatchFacing(">");
-        return dispatchMove("RIGHT");
+        dispatchFacing("RIGHT");
+        return checkNextZone("RIGHT");
       case 40:
       case 83:
-        dispatchFacing("V");
-        return dispatchMove("DOWN");
+        dispatchFacing("DOWN");
+        return checkNextZone("DOWN");
       default:
         console.log(evt.keyCode);
     }
   }
+  // event listener for movement
   window.addEventListener("keydown", handleKeyPress);
-  window.addEventListener("keyup", evt => { 
+  // event listener for interact
+  window.addEventListener("keyup", evt => {
     if (evt.keyCode === 13) {
       return handleInteraction();
     }
-  })
+  });
 
   return player;
 }
