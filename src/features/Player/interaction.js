@@ -1,5 +1,6 @@
 import store from "../../config/store";
 import { spriteSize, mapSize } from "../../config/constants";
+import textBoxAnimation from "../Textbox/animation"
 
 export default function handleInteraction() {
   /* set variable for state info that will be changed,
@@ -55,7 +56,7 @@ export default function handleInteraction() {
   });
 
   const currentText = store.getState().textbox.text;
-
+  textBoxAnimation()
   return store.dispatch({
     type: "CHANGE_TEXT",
     payload: {

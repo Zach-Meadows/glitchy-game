@@ -1,23 +1,44 @@
 import React from "react"
 import { connect } from "react-redux"
+import styled, { keyframes } from 'styled-components'
+
+const fade = keyframes`
+0% {
+    opacity: 1;
+}
+30% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+`
+const FadeBox = styled.div`
+position: absolute;
+background-color: wheat;
+width: 300px;
+top: 0;
+border-radius: 20px;
+right: 50px;
+z-index: 5;
+opacity: 0;
+animation: ${fade} 3s ease-out;
+`
 
 function Textbox(props) {
     return(
-        <div style={{
-            display: `${props.display && props.text ? "block": "none"}`,
-            position: "absolute",
-            backgroundColor: "wheat",
-            width: "300px",
-            top: "0",
-            borderRadius: "20px",
-            right: "50px",
-            zIndex: "5",
-            opacity: 1
-        }}>
+        <>
+        {props.display && props.text ? 
+            
+        
+        <FadeBox >
             <h3 style={{
                textAlign: "center"
             }}>{props.text}</h3>
-        </div>
+        </FadeBox>
+        : null
+    }
+        </>
     )
 }
 function mapStateToProps(state) {
