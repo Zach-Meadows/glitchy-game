@@ -6,7 +6,7 @@ import textReducer from "../features/Textbox/reducer"
 const rootReducer = combineReducers({
   player: playerReducer,
   map: mapReducer,
-  text: textReducer
+  textbox: textReducer
 });
 
 const store = createStore(

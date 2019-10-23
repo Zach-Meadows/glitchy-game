@@ -1,14 +1,14 @@
 const initialState = {
     text: "You must construct additional pylons",
-    display: false
+    display: false,
+    animation: 1
 }
 
 const textReducer = (state=initialState, action) => {
     switch (action.type) {
         case 'CHANGE_TEXT':
             return {
-                text: action.payload,
-                display: action.switch
+              ...action.payload
             }
         default:
             return state

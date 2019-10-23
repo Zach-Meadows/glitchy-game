@@ -11,7 +11,8 @@ function Textbox(props) {
             top: "0",
             borderRadius: "20px",
             right: "50px",
-            zIndex: "5"
+            zIndex: "5",
+            opacity: 1
         }}>
             <h3 style={{
                textAlign: "center"
@@ -21,7 +22,7 @@ function Textbox(props) {
 }
 function mapStateToProps(state) {
     return {
-        ...state.text
+        ...state.textbox
     }
 }
 
