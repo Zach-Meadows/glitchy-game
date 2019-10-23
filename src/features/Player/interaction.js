@@ -24,12 +24,17 @@ export default function handleInteraction() {
         } else{
             return [arr[0]/spriteSize, arr[1]/spriteSize]
         }
-    }   
+    }
 
+   
     const interactionSpot = convertToMatrixNums(facingNum(playerFacing)) 
-    
-    
-    return console.log(interactionSpot === undefined ? "You can't escape." : mapInfo[interactionSpot[1]][interactionSpot[0]])
+    const visible = store.getState().text.display
+   return store.dispatch({
+        type: "CHANGE_TEXT",
+        payload: interactionSpot === undefined ? "You can't escape." : mapInfo[interactionSpot[1]][interactionSpot[0]],
+        switch: !visible
+    })
+   
     
     
 }

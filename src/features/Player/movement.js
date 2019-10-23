@@ -71,8 +71,6 @@ export default function handleMovement(player) {
   function handleKeyPress(evt) {
     evt.preventDefault();
     switch (evt.keyCode) {
-      case 13:
-        return handleInteraction();
       case 37:
       case 65:
         dispatchFacing("<");
@@ -93,8 +91,12 @@ export default function handleMovement(player) {
         console.log(evt.keyCode);
     }
   }
-  window.addEventListener("keydown", evt => {
-    handleKeyPress(evt);
-  });
+  window.addEventListener("keydown", handleKeyPress);
+  window.addEventListener("keyup", evt => { 
+    if (evt.keyCode === 13) {
+      return handleInteraction();
+    }
+  })
+
   return player;
 }

@@ -1,6 +1,7 @@
 const initialState = {
     position: [0, 0],
-    facing: "DOWN"
+    facing: "DOWN",
+    controls: true
 }
 
 const playerReducer = (state=initialState, action) => {
@@ -12,6 +13,10 @@ const playerReducer = (state=initialState, action) => {
         case 'CHANGE_FACING':
             return {
                 ...action.payload
+            }
+        case 'TOGGLE_CONTROLS':
+            return {
+                controls: action.payload
             }
         default:
             return state

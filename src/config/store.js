@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
 import playerReducer from "../features/Player/reducer";
 import mapReducer from "../features/Map/reducer";
+import textReducer from "../features/Textbox/reducer"
 
 const rootReducer = combineReducers({
   player: playerReducer,
-  map: mapReducer
+  map: mapReducer,
+  text: textReducer
 });
 
 const store = createStore(

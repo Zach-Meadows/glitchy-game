@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 function Textbox(props) {
     return(
         <div style={{
-            display: `${props}`,
+            display: `${props.display && props.text ? "block": "none"}`,
             position: "absolute",
             backgroundColor: "wheat",
             width: "300px",
@@ -15,13 +15,13 @@ function Textbox(props) {
         }}>
             <h3 style={{
                textAlign: "center"
-            }}>it's a rock</h3>
+            }}>{props.text}</h3>
         </div>
     )
 }
 function mapStateToProps(state) {
     return {
-        ...state.map
+        ...state.text
     }
 }
 
