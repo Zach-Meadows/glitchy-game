@@ -4,6 +4,10 @@ import rock from "../../data/images/rock.jpg";
 import tree from "../../data/images/tree.png";
 import grass from "../../data/images/grass-patch.jpg";
 import pebble from "../../data/images/pebble.jpg";
+import bush from "../../data/images/bush.jpg"
+import cone from "../../data/images/cone.jpg"
+import bag from "../../data/images/bag.jpg"
+import sign from "../../data/images/sign.jpg"
 import { connect } from "react-redux";
 
 function getTileImage(num) {
@@ -12,6 +16,14 @@ function getTileImage(num) {
       return rock;
     case 2:
       return tree;
+    case 3:
+      return bush;
+    case 4:
+      return cone;
+    case 5:
+      return bag;
+    case 6:
+      return sign;
     default:
       // randomly generate a patch of grass or a pebble
       const image = Math.floor(Math.random() * 2);

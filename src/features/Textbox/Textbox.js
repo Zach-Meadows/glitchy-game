@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import styled, { keyframes } from 'styled-components'
 
 const FadeBox = styled.div`
+padding: 5px;
 border: solid white 2px;
 justify-self: center;
 position: absolute;

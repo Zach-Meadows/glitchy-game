@@ -18,6 +18,7 @@ function GameInfo() {
     return(
         <div style={{
             backgroundColor: "black",
+            float: "right",
             color: "white",
             border: "solid white 5px",
             borderRadius: "5px",

@@ -1,7 +1,6 @@
 import store from "../../config/store";
 import { spriteSize, mapSize } from "../../config/constants";
 import handleInteraction from "./interaction";
-let exit = "LEFT"
 
 export default function handleMovement(player) {
   function getNewPos(direction) {
@@ -30,7 +29,7 @@ export default function handleMovement(player) {
     const obstacle = store.getState().map.tiles[newPos[1] / spriteSize][
       newPos[0] / spriteSize
     ];
-    return obstacle === 0 || obstacle === 9? true : false;
+    return obstacle === 0 || obstacle === 9 || obstacle === 8? true : false;
   }
 
   function dispatchMove(direction) {
@@ -67,13 +66,36 @@ export default function handleMovement(player) {
     const metReq = store.getState().zone.conditionMet
     const currentPosition = store.getState().player.position
     const standingOn = store.getState().map.tiles[currentPosition[1]/spriteSize][currentPosition[0]/spriteSize]
-    if (standingOn === 9 && direction === store.getState().map.exit && metReq) {
+    if (standingOn === 9 && direction === store.getState().map.exit[0] && metReq) {
       store.dispatch({
         type: "CHANGE_ZONE",
         payload: {
           ...store.getState().zone,
           conditionMet: false,
           layout: store.getState().zone.layout + 1
+        }
+      })
+      store.dispatch({
+        type: "MOVE_PLAYER",
+        payload: {
+          ...store.getState().player,
+          position: [store.getState().map.playerPos[0][0] * 80, store.getState().map.playerPos[0][1] * 80]
+        }
+      })
+    } else if(standingOn === 8 && direction === store.getState().map.exit[1] && metReq){
+      store.dispatch({
+        type: "CHANGE_ZONE",
+        payload: {
+          ...store.getState().zone,
+          conditionMet: false,
+          layout: store.getState().zone.layout - 1
+        }
+      })
+      store.dispatch({
+        type: "MOVE_PLAYER",
+        payload: {
+          ...store.getState().player,
+          position: [store.getState().map.playerPos[1][0] * 80, store.getState().map.playerPos[1][1] * 80]
         }
       })
     } else {
