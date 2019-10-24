@@ -8,9 +8,9 @@ export const tiles = [
 export const interact = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
-  [0, 0, "rock", 0, 0],
+  [0, 0, "it's a rock", 0, 0],
   [0, 0, 0, 0, 0],
-  [0, 0, "rock", 0, 0]
+  [0, 0, "it's a rock", 0, 0]
 ]
 
 export const exit = "RIGHT"

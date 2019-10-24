@@ -76,6 +76,9 @@ export default function handleMovement(player) {
 // event listener func for directional controls
   function handleKeyPress(evt) {
     evt.preventDefault();
+    //added condition to only move if textbox isn't up
+    const textDisplay = store.getState().textbox.display
+    if (!textDisplay) {
     switch (evt.keyCode) {
       case 37:
       case 65:
@@ -95,6 +98,7 @@ export default function handleMovement(player) {
         return checkNextZone("DOWN");
       default:
         console.log(evt.keyCode);
+      }
     }
   }
   // event listener for movement

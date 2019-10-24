@@ -9,6 +9,7 @@ export default function handleInteraction() {
   const playerFacing = store.getState().player.facing;
   const playerPosition = store.getState().player.position;
   const mapInfo = store.getState().map.interact;
+  
 
   /* function that defines which interaction element we will interact
    ** with in reference to the player
@@ -43,29 +44,30 @@ export default function handleInteraction() {
 
   const interactionSpot = convertToMatrixNums(facingNum(playerFacing));
 
+
   store.dispatch({
     type: "CHANGE_TEXT",
     payload: {
       ...store.getState().textbox,
       text: interactionSpot === undefined
           ? "You can't escape."
-          : mapInfo[interactionSpot[1]][interactionSpot[0]],
-      display: true
-      
+          : mapInfo[interactionSpot[1]][interactionSpot[0]]
     }
   });
-  if (interactionSpot != undefined && mapInfo[interactionSpot[1]][interactionSpot[0]] != 0) {
-    textBoxAnimation()
-  }
 
-//   const currentText = store.getState().textbox.text;
-//   textBoxAnimation()
-//   return store.dispatch({
-//     type: "CHANGE_TEXT",
-//     payload: {
-//       text: currentText,
-//       display: currentText ? !visible : false,
-//       animation: 1
-//     }
-//   });
+  const show = store.getState().textbox.display
+    store.dispatch({
+      type: "CHANGE_TEXT",
+      payload: {
+        ...store.getState().textbox,
+        display: store.getState().textbox.text ? !show : false
+      }
+    })
+
+// unused fade out animation
+
+  // if (interactionSpot != undefined && mapInfo[interactionSpot[1]][interactionSpot[0]] != 0) {
+  //   textBoxAnimation()
+  // }
+
 }

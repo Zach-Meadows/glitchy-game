@@ -2,27 +2,18 @@ import React from "react"
 import { connect } from "react-redux"
 import styled, { keyframes } from 'styled-components'
 
-const fade = keyframes`
-0% {
-    opacity: 1;
-}
-50% {
-    opacity: 1;
-}
-100% {
-    opacity: 0;
-}
-`
 const FadeBox = styled.div`
+border: solid white 2px;
+justify-self: center;
 position: absolute;
+align-self: center;
 background-color: wheat;
 width: 300px;
-top: 0;
 border-radius: 20px;
 right: 50px;
 z-index: 5;
-opacity: 0;
-animation: ${fade} 5s ease-in;
+opacity: 1;
+box-shadow: 12px 12px rgba(0,0,0,0.3);
 `
 function Textbox(props) {
     return(
@@ -32,6 +23,10 @@ function Textbox(props) {
             <h3 style={{
                textAlign: "center"
             }}>{props.text}</h3>
+            <p style={{
+                textAlign: "right",
+                paddingRight: "10px"
+            }}>Press <b>Enter</b> ></p>
         </FadeBox>
         : null
     }

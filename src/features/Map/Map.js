@@ -25,7 +25,10 @@ function Map(props) {
   return (
     <div
       style={{
+        borderRadius: "5px",
+        border: "solid white 5px",
         position: "relative",
+        display: 'flex',
         width: "400px",
         height: "400px",
         margin: "20px auto"
