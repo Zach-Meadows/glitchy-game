@@ -9,10 +9,10 @@ Things to add
 #### MVP
 
 - Player
-  - [ ] Movement
-  - [ ] Interaction
+  - [x] Movement
+  - [x] Interaction
 - Environment
-  - [ ] Walls
+  - [x] Walls
   - [ ] Doorways
   
 #### Things to add later
