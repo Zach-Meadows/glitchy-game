@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from "./features/Map/Map"
+import GameInfo from "./features/GameInfo/GameInfo"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       }}>*Working Title*</h1>
       </div>
       <Map />
+      <GameInfo />
     </div>
   );
 }

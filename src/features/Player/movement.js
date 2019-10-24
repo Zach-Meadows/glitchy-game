@@ -36,36 +36,43 @@ export default function handleMovement(player) {
   function dispatchMove(direction) {
     const oldPos = store.getState().player.position;
     const newPos = getNewPos(direction);
-    const currentFacing = store.getState().player.facing;
     store.dispatch({
       type: "MOVE_PLAYER",
       payload: {
-        position: checkMap(newPos) && checkObstacles(newPos) ? newPos : oldPos,
-        facing: currentFacing
+        ...store.getState().player,
+        position: checkMap(newPos) && checkObstacles(newPos) ? newPos : oldPos
       }
     });
   }
   // function to change the state of where the player is
   function dispatchFacing(direction) {
-    const oldPos = store.getState().player.position;
     store.dispatch({
       type: "CHANGE_FACING",
       payload: {
-        position: oldPos,
+        ...store.getState().player,
         facing: direction
       }
     });
   }
+  // function checkSpecialRules() {
+    
+  //   mapRules()
+  // }
+
   // check if player meets conditions to go to next zone,
   // otherwise move the player
   function checkNextZone(direction) {
+    const mapRules = store.getState().map.rules
+    mapRules(direction)
+    const metReq = store.getState().zone.conditionMet
     const currentPosition = store.getState().player.position
     const standingOn = store.getState().map.tiles[currentPosition[1]/spriteSize][currentPosition[0]/spriteSize]
-    if (standingOn === 9 && direction === store.getState().zone.exit) {
+    if (standingOn === 9 && direction === store.getState().map.exit && metReq) {
       store.dispatch({
         type: "CHANGE_ZONE",
         payload: {
           ...store.getState().zone,
+          conditionMet: false,
           layout: store.getState().zone.layout + 1
         }
       })
@@ -106,7 +113,7 @@ export default function handleMovement(player) {
   // event listener for interact
   window.addEventListener("keyup", evt => {
     if (evt.keyCode === 13) {
-      return handleInteraction();
+      return handleInteraction(evt.keyCode);
     }
   });
 

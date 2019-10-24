@@ -1,7 +1,7 @@
 const initialState = {
     position: [0, 0],
     facing: "DOWN",
-    controls: true
+    interacted: []
 }
 
 const playerReducer = (state=initialState, action) => {
@@ -14,9 +14,9 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...action.payload
             }
-        case 'TOGGLE_CONTROLS':
+        case 'INTERACTED':
             return {
-                controls: action.payload
+                ...action.payload
             }
         default:
             return state

@@ -2,7 +2,7 @@ import store from "../../config/store";
 import { spriteSize, mapSize } from "../../config/constants";
 import textBoxAnimation from "../Textbox/animation"
 
-export default function handleInteraction() {
+export default function handleInteraction(key) {
   /* set variable for state info that will be changed,
    ** or used for calculations
    */
@@ -64,6 +64,9 @@ export default function handleInteraction() {
       }
     })
 
+  const checkRules = store.getState().map.rules
+
+  checkRules(key, interactionSpot)
 // unused fade out animation
 
   // if (interactionSpot != undefined && mapInfo[interactionSpot[1]][interactionSpot[0]] != 0) {

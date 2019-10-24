@@ -1,6 +1,5 @@
 const initialState = {
     layout: 1,
-    exit: "RIGHT",
     conditionMet: false
 }
 
