@@ -1,16 +1,19 @@
 {
   "files": {
     "main.css": "/glitchy-game/static/css/main.d23de372.chunk.css",
-    "main.js": "/glitchy-game/static/js/main.4c9846ac.chunk.js",
-    "main.js.map": "/glitchy-game/static/js/main.4c9846ac.chunk.js.map",
+    "main.js": "/glitchy-game/static/js/main.8b9dff3a.chunk.js",
+    "main.js.map": "/glitchy-game/static/js/main.8b9dff3a.chunk.js.map",
     "runtime-main.js": "/glitchy-game/static/js/runtime-main.5e15c6e8.js",
     "runtime-main.js.map": "/glitchy-game/static/js/runtime-main.5e15c6e8.js.map",
-    "static/js/2.27c74d63.chunk.js": "/glitchy-game/static/js/2.27c74d63.chunk.js",
-    "static/js/2.27c74d63.chunk.js.map": "/glitchy-game/static/js/2.27c74d63.chunk.js.map",
+    "static/js/2.458af599.chunk.js": "/glitchy-game/static/js/2.458af599.chunk.js",
+    "static/js/2.458af599.chunk.js.map": "/glitchy-game/static/js/2.458af599.chunk.js.map",
     "index.html": "/glitchy-game/index.html",
-    "precache-manifest.e22e43a10c09052978e22a7b3815b707.js": "/glitchy-game/precache-manifest.e22e43a10c09052978e22a7b3815b707.js",
+    "precache-manifest.a3982ea4a064788a319c1c13dcee79f2.js": "/glitchy-game/precache-manifest.a3982ea4a064788a319c1c13dcee79f2.js",
     "service-worker.js": "/glitchy-game/service-worker.js",
     "static/css/main.d23de372.chunk.css.map": "/glitchy-game/static/css/main.d23de372.chunk.css.map",
+    "static/media/bag.jpg": "/glitchy-game/static/media/bag.20e4fea4.jpg",
+    "static/media/bush.jpg": "/glitchy-game/static/media/bush.8b2a6ed6.jpg",
+    "static/media/cone.jpg": "/glitchy-game/static/media/cone.53293b6e.jpg",
     "static/media/index.css": "/glitchy-game/static/media/dark-wood.e3577ddd.png",
     "static/media/down.jpg": "/glitchy-game/static/media/down.8126b2ed.jpg",
     "static/media/grass-patch.jpg": "/glitchy-game/static/media/grass-patch.6f3f2fc9.jpg",
@@ -19,6 +22,7 @@
     "static/media/playerImage.jpg": "/glitchy-game/static/media/playerImage.85c158f7.jpg",
     "static/media/right.jpg": "/glitchy-game/static/media/right.0ef99b65.jpg",
     "static/media/rock.jpg": "/glitchy-game/static/media/rock.aab2d776.jpg",
+    "static/media/sign.jpg": "/glitchy-game/static/media/sign.b7004fe2.jpg",
     "static/media/tree.png": "/glitchy-game/static/media/tree.3be21d2f.png",
     "static/media/up.jpg": "/glitchy-game/static/media/up.cfbcc9f6.jpg"
   }

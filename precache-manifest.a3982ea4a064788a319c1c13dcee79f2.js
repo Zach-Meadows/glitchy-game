@@ -1,23 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "de2b02a6328066a067f83d80e99ad1d4",
+    "revision": "141970cd8fe180a06956e79d75be8b32",
     "url": "/glitchy-game/index.html"
   },
   {
-    "revision": "18880d95f19d8d2e515c",
+    "revision": "dae97f961cbdee61e1cb",
     "url": "/glitchy-game/static/css/main.d23de372.chunk.css"
   },
   {
-    "revision": "f670f562e49fc266ee01",
-    "url": "/glitchy-game/static/js/2.27c74d63.chunk.js"
+    "revision": "5f52ca98443f76897312",
+    "url": "/glitchy-game/static/js/2.458af599.chunk.js"
   },
   {
-    "revision": "18880d95f19d8d2e515c",
-    "url": "/glitchy-game/static/js/main.4c9846ac.chunk.js"
+    "revision": "dae97f961cbdee61e1cb",
+    "url": "/glitchy-game/static/js/main.8b9dff3a.chunk.js"
   },
   {
     "revision": "e2c04538866877a24093",
     "url": "/glitchy-game/static/js/runtime-main.5e15c6e8.js"
+  },
+  {
+    "revision": "20e4fea4fd2634d720d78bdc29198327",
+    "url": "/glitchy-game/static/media/bag.20e4fea4.jpg"
+  },
+  {
+    "revision": "8b2a6ed652b359d458ee1ca93cb5e096",
+    "url": "/glitchy-game/static/media/bush.8b2a6ed6.jpg"
+  },
+  {
+    "revision": "53293b6e02ef73088c5e3b68e59b7453",
+    "url": "/glitchy-game/static/media/cone.53293b6e.jpg"
   },
   {
     "revision": "e3577ddd019c610cedbeb38ebff4e2ef",
@@ -50,6 +62,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "aab2d77689f970fb60965975606d5b58",
     "url": "/glitchy-game/static/media/rock.aab2d776.jpg"
+  },
+  {
+    "revision": "b7004fe2c273cb12aef0df9b6521e168",
+    "url": "/glitchy-game/static/media/sign.b7004fe2.jpg"
   },
   {
     "revision": "3be21d2f7e837b274df4b980fcf92003",
