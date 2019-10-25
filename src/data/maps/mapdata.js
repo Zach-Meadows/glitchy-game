@@ -215,7 +215,7 @@ const map6 = {
         [4, 4, 4, 8, 4],
       ],
       interact: [
-          ["Just follow the cones.", "A whole heckin` lot of cones eh?", 0, 0, 0],
+          [0, "A whole heckin` lot of cones eh?", 0, 0, 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],

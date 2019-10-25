@@ -53,11 +53,6 @@ export default function handleMovement(player) {
       }
     });
   }
-  // function checkSpecialRules() {
-    
-  //   mapRules()
-  // }
-
   // check if player meets conditions to go to next zone,
   // otherwise move the player
   function checkNextZone(direction) {
