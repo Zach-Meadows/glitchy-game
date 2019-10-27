@@ -1,8 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Working Title(a working title)
 
-# Glitchy Game (a working title)
+Welcome to *Working Title*, a game where the player explores an unfinished game. Explore the world and try to discover what seems to be wrong.
 
-Welcome to *Working Title*, a game where the player explores an unfinished game.
+## Build
+- Javascript
+- CSS
+- React
+- Redux
+
+I used React to make different components which would make it easy to manage what I want on the screen and allow me to use similarly structured items such as characters and map tiles, while still allowing them to be different in some ways.
 
 Things to add
 -----
@@ -16,9 +22,10 @@ Things to add
   - [ ] Doorways
   
 #### Things to add later
-
 - Player
   - [ ] Combat
 - Environment
   - [ ] Obstacles
-- Enemies
+- NPC
+  - [ ] Characters
+  - [ ] Enemies
