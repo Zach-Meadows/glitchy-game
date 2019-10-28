@@ -22,7 +22,7 @@ function Map(props) {
         display: 'flex',
         width: "400px",
         height: "400px",
-        margin: "20px auto"
+        margin: "20px auto",
       }}
     >
       <Textbox/>
