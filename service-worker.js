@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/glitchy-game/precache-manifest.a3982ea4a064788a319c1c13dcee79f2.js"
+  "/glitchy-game/precache-manifest.40a0c8a3fbabd89b2f09b38f90c747ec.js"
 );
 
 self.addEventListener('message', (event) => {
