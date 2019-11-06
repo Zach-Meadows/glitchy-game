@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6e2f2cdab8f6a31c11f0bc0a1a3b5b90",
+    "revision": "67feb8ace8c5e0edf5e97fcd76fa2024",
     "url": "/glitchy-game/index.html"
   },
   {
-    "revision": "1945e504cf9fa294ee81",
+    "revision": "3e4b52d37e37b1dfcae8",
     "url": "/glitchy-game/static/css/main.d23de372.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/glitchy-game/static/js/2.4c6766a2.chunk.js"
   },
   {
-    "revision": "1945e504cf9fa294ee81",
-    "url": "/glitchy-game/static/js/main.392cf9cd.chunk.js"
+    "revision": "3e4b52d37e37b1dfcae8",
+    "url": "/glitchy-game/static/js/main.e2a1c367.chunk.js"
   },
   {
     "revision": "e2c04538866877a24093",
