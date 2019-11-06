@@ -99,10 +99,11 @@ export default function handleMovement(player) {
   }
 // event listener func for directional controls
   function handleKeyPress(evt) {
-    evt.preventDefault();
+    
     //added condition to only move if textbox isn't up
     const textDisplay = store.getState().textbox.display
     if (!textDisplay) {
+      evt.preventDefault();
     switch (evt.keyCode) {
       case 37:
       case 65:
@@ -129,7 +130,21 @@ export default function handleMovement(player) {
   window.addEventListener("keydown", handleKeyPress);
   // event listener for interact
   window.addEventListener("keyup", evt => {
-    if (evt.keyCode === 13) {
+    const text = store.getState().textbox.text
+    const currentText = store.getState().textbox.currentText
+    const textboxUp = store.getState().textbox.display
+    //added a if function to fill up all text if player hits enter while the textbox is typing.
+    if (evt.keyCode === 13 && text != currentText && textboxUp) {
+      store.dispatch({
+        type: "CHANGE_TEXT",
+        payload: {
+          ...store.getState().textbox,
+          currentText: text
+        }
+      })
+    }
+    else if (evt.keyCode === 13 && 
+      ((textboxUp && text === currentText) || !textboxUp)) {
       return handleInteraction(evt.keyCode);
     }
   });

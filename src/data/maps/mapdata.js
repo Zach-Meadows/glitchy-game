@@ -3,20 +3,20 @@ import { setTimeout } from "timers";
 const map1 = {
   tiles: [
     [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 9, 0, 0],
-    [0, 0, 1, 0, 0]
+    [0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 9],
+    [0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0]
   ],
   interact: [
     [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, "it's a rock"],
     [0, 0, 0, 0, 0],
-    [0, 0, "it's a rock", 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, "it's a rock", 0, 0]
+    [0, 0, 0, 0, "it's a rock"],
+    [0, 0, 0, 0, 0]
   ],
   exit: ["RIGHT"],
-  playerPos: [[0, 0], [0, 0]],
+  playerPos: [[0, 0], [4, 2]],
   rules: function() {
     if (true) {
       store.dispatch({
@@ -47,14 +47,15 @@ function helloPlayer() {
       conditionMet: true
     }
   });
+ 
 }
 const map2 = {
   tiles: [
-    [0, 0, 2, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 9, 0, 0, 0]
+    [3, 3, 2, 3, 3],
+    [3, 0, 0, 0, 3],
+    [3, 0, 0, 0, 3],
+    [3, 0, 0, 0, 3],
+    [3, 3, 3, 3, 3]
   ],
   interact: [
     [
@@ -69,17 +70,18 @@ const map2 = {
     [0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0]
   ],
-  exit: ["DOWN"],
-  playerPos: [[2, 3], [2, 3]],
+  exit: ["DOWN", "LEFT"],
+  playerPos: [[1, 2], [1, 4]],
   rules: function(key, interact) {
     const interactedList = store.getState().player.interacted;
+    
     if (
       !firstTime &&
       interactedList.includes(2) &&
       !store.getState().textbox.display
     ) {
       firstTime = true;
-      setTimeout(helloPlayer, 1000);
+      setTimeout(helloPlayer, 100);
     }
     if (interact != undefined && key === 13) {
       const interactionSpot = store.getState().map.tiles[interact[1]][
@@ -103,31 +105,46 @@ const map2 = {
         }
       });
     }
+    if (store.getState().zone.conditionMet && store.getState().map.tiles[4][1] === 3) {
+      store.dispatch({
+        type: "ADD_TILES",
+        payload: {
+          ...store.getState().map,
+          tiles: [
+            [3, 3, 2, 3, 3],
+            [3, 0, 0, 0, 3],
+            [3, 0, 0, 0, 3],
+            [3, 0, 0, 0, 3],
+            [3, 9, 3, 3, 3]
+          ]
+        }
+      })
+    }
   }
 };
 
 const map3 = {
   tiles: [
+    [3, 3, 3, 3, 1],
     [3, 0, 0, 0, 1],
-    [3, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 9],
-    [4, 3, 1, 3, 0]
+    [3, 0, 0, 0, 3],
+    [4, 0, 0, 0, 9],
+    [4, 3, 1, 3, 3]
   ],
   interact: [
-    ["Bush.", 0, 0, 0, "Yep, it's a rock."],
+    ["Bush.", "Your path is blocked, you can't go back.", "Bush's baked beans.", "You guessed it, it's a bush.", 0],
     ["It's a bush.", 0, 0, 0, "Can you smell what I'm cooking?"],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
+    ["Bushes everywhere!", 0, 0, 0, "A bush."],
+    ["Traffic cones? Where's the traffic?", 0, 0, 0, 0],
     [
-      "A traffic cone? Where's the traffic?",
+      "Traffic cones? Where's the traffic?",
       "It's a bush.",
       "Still just a rock.",
       "George W.",
-      0
+      "A Bush."
     ]
   ],
-  exit: ["RIGHT"],
+  exit: ["RIGHT", "UP"],
   playerPos: [[1, 0], [4, 3]],
   rules: function() {
     if (true) {
@@ -179,11 +196,11 @@ const map4 = {
 };
 const map5 = {
   tiles: [
-      [4, 8, 4, 9, 4],
-      [4, 0, 0, 0, 4],
+      [4, 8, 4, 4, 4],
+      [4, 0, 0, 0, 9],
       [4, 4, 4, 4, 4],
       [0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0],
+      [3, 1, 0, 1, 3],
     ],
     interact: [
         ["Just follow the cones.", 0, 0, 0, 0],
@@ -192,8 +209,8 @@ const map5 = {
         [0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0],
     ],
-    exit: ["UP", "UP"],
-    playerPos: [[1,0],[3, 0]],
+    exit: ["RIGHT", "UP"],
+    playerPos: [[1,0],[4, 1]],
     rules: function() {
         if (true) {
           store.dispatch({
@@ -208,21 +225,21 @@ const map5 = {
 };
 const map6 = {
     tiles: [
-        [4, 6, 4, 4, 4],
-        [4, 0, 0, 0, 4],
+        [4, 4, 4, 6, 4],
+        [8, 0, 0, 0, 4],
         [4, 0, 4, 0, 4],
         [4, 0, 0, 0, 4],
-        [4, 4, 4, 8, 4],
+        [4, 4, 4, 9, 4],
       ],
       interact: [
-          [0, "A whole heckin` lot of cones eh?", 0, 0, 0],
+          [0, 0, 0, "A whole heckin` lot of cones eh?", 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0],
       ],
-      exit: ["UP", "DOWN"],
-      playerPos: [[3,4],[3, 0]],
+      exit: ["DOWN", "LEFT"],
+      playerPos: [[0,1],[3, 4]],
       rules: function() {
           if (true) {
             store.dispatch({
@@ -235,6 +252,66 @@ const map6 = {
           }
         }
   };
+
+  const map7 = {
+    tiles: [
+      [4, 4, 4, 8, 4],
+      [4, 0, 0, 0, 4],
+      [4, 0, 4, 4, 4],
+      [4, 0, 0, 0, 4],
+      [4, 4, 4, 9, 4]
+    ],
+    interact: [
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
+    ],
+    exit: ["DOWN", "UP"],
+    playerPos: [[3, 0], [3, 4]],
+    rules: function() {
+      if (true) {
+        store.dispatch({
+          type: "CHANGE_ZONE",
+          payload: {
+            ...store.getState().zone,
+            conditionMet: true
+          }
+        });
+      }
+    }
+  };  
+
+  const map8 = {
+    tiles: [
+      [4, 4, 4, 8, 4],
+      [4, 0, 0, 0, 4],
+      [4, 0, 4, 0, 4],
+      [4, 0, 0, 0, 4],
+      [4, 4, 4, 4, 4]
+    ],
+    interact: [
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0]
+    ],
+    exit: ["DOWN", "UP"],
+    playerPos: [[3, 0], [3, 4]],
+    rules: function() {
+      if (true) {
+        store.dispatch({
+          type: "CHANGE_ZONE",
+          payload: {
+            ...store.getState().zone,
+            conditionMet: true
+          }
+        });
+      }
+    }
+  };  
 export const mapArray = [
   {
     ...map1
@@ -253,5 +330,11 @@ export const mapArray = [
   },
   {
       ...map6
+  },
+  {
+    ...map7
+  },
+  {
+    ...map8
   }
 ];
