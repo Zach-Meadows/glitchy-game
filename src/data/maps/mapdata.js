@@ -81,7 +81,7 @@ const map2 = {
       !store.getState().textbox.display
     ) {
       firstTime = true;
-      setTimeout(helloPlayer, 100);
+      setTimeout(helloPlayer, 2000);
     }
     if (interact != undefined && key === 13) {
       const interactionSpot = store.getState().map.tiles[interact[1]][
