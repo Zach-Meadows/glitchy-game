@@ -1,5 +1,6 @@
 const initialState = {
     text: "You must construct additional pylons",
+    currentText: "",
     display: false,
 }
 
